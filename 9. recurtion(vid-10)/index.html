@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recurtion</title>
+</head>
+
+<body>
+    <h4>Recursion</h4>
+    <p>Get a factorial</p>
+    <input type="number" placeholder="Type a number" id="num" />
+    <button onclick="findFactorial()">Find factorial</button>
+    <p id="showFactorial"></p>
+
+    <script>
+        let showFactorial = document.getElementById("showFactorial");
+        const findFactorial = () => {
+            let num = document.getElementById("num").value;
+            let data = parseInt(num);
+
+            const recur = (num) => {
+                if (num === 0) {
+                    return 1;
+                }
+                return num * recur(num - 1)
+            }
+            showFactorial.innerHTML = `The factorial is: ${recur(data)}`
+        }
+
+
+
+        console.log()
+    </script>
+</body>
+
+</html>
