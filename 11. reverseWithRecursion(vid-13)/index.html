@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse with recursion</title>
+</head>
+
+<body>
+    <h4>Reverse with recursion</h4>
+    <p>Go to console for result</p>
+
+    <script>
+        let arr = [2, 0, 6, 7, 8, 10];
+        console.log(arr)
+
+        const reverseFunc = (data, start, end) => {
+            if (start <= end) {
+                let temp = data[start];
+                data[start] = data[end];
+                data[end] = temp;
+                reverseFunc(data, start + 1, end - 1)
+            }
+        }
+        reverseFunc(arr, 0, arr.length - 1);
+        console.log(arr)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indirect recurtion</title>
+</head>
+
+<body>
+
+    <h4>In direct recurtion</h4>
+    <p>Go to console for result.</p>
+
+    <script>
+        let money = 100;
+        let totalMango = 0;
+
+        const buyMango = (x) => {
+
+            if (x > 0) {
+                console.log(`Money cost: ${x}; Total mango: ${totalMango}`)
+                moreMango(x)
+                debugger;
+            } else {
+                console.log(`I don't have money. Money: ${x}; Total mango ${totalMango}`)
+            }
+        }
+        const moreMango = (y) => {
+            totalMango++
+            buyMango(y - 10)
+
+        }
+
+        buyMango(money)
+    </script>
+</body>
+
+</html>

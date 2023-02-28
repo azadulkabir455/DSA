@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Data structure</title>
+</head>
+
+<body>
+    <h4>Stack Data structure</h4>
+    <p>Go to console for view result</p>
+
+    <script>
+        let arr = [];
+        let currentSize = arr.length;
+        let max = 5;
+
+        const push = (val) => {
+            if (currentSize <= max) {
+                arr[currentSize] = val;
+                currentSize++;
+            }else {
+                console.log("The stack is full", val)
+            }
+
+        }
+
+        const pop = () => {
+            if(currentSize > 0) {
+                currentSize -= 1;
+                arr.length = currentSize;
+            }else {
+                console.log("The stack is already empty")
+            }
+        }
+
+        push(12)
+        push(15)
+        push(21)
+        push(33)
+        push(43)
+        pop();
+        pop();
+        pop();
+
+        console.log(arr)
+    </script>
+</body>
+
+</html>
