@@ -10,20 +10,29 @@
 
 <body>
     <h4>Stack Data structure</h4>
-    <p>Go to console for view result</p>
-
+    <input type="number" place="Add a Number" id="val" />
+    <button onclick="push()">Add</button>
+    <button onclick="pop()">Remove</button>
+    <p id="showResult"></p>
     <script>
         let arr = [];
         let currentSize = arr.length;
-        let max = 5;
+        let max = 7;
+ 
 
-        const push = (val) => {
+        const push = () => {
+            let val = document.getElementById("val").value;
+            console.log(val)
             if (currentSize <= max) {
                 arr[currentSize] = val;
                 currentSize++;
+                console.log("Value added");
             }else {
                 console.log("The stack is full", val)
             }
+
+            document.getElementById("val").value = ""
+            document.getElementById("showResult").innerHTML = `Array: [${arr}]`
 
         }
 
@@ -31,21 +40,14 @@
             if(currentSize > 0) {
                 currentSize -= 1;
                 arr.length = currentSize;
+                alert("Value removed")
             }else {
                 console.log("The stack is already empty")
             }
+            document.getElementById("showResult").innerHTML = `Array: [${arr}]`
         }
 
-        push(12)
-        push(15)
-        push(21)
-        push(33)
-        push(43)
-        pop();
-        pop();
-        pop();
 
-        console.log(arr)
     </script>
 </body>
 

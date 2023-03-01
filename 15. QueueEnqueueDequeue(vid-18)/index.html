@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+</head>
+
+<body>
+    <h4>Queue enqueue dequeue</h4>
+
+    <script>
+        let queue = [];
+        let currentSize = queue.length;
+        let max = 5;
+        const enqueue = (val) => {
+            if (max >= currentSize) {
+                queue[currentSize] = val;
+                currentSize++
+            } else {
+                alert("Queue is full")
+            }
+        }
+
+        const dequeue = () => {
+            if (currentSize > 0) {
+                for (let i = 0; i < queue.length; i++) {
+                    queue[i] = queue[i + 1];
+                }
+                currentSize -= 1;
+                queue.length = currentSize;
+            }
+        }
+        enqueue(10);
+        enqueue(33);
+        enqueue(5);
+        dequeue();
+        console.log(queue)
+    </script>
+</body>
+
+</html>
