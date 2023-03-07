@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check string Anagram</title>
+</head>
+
+<body>
+    <h4>Check string anagram</h4>
+    <script>
+        const checkAnagram = (stringOne, stringTwo) => {
+            let stringOject = {}
+            if (stringOne.length !== stringTwo.length) {
+                console.log("string Length are not match");
+                return false;
+            }
+            for (ch of stringOne) {
+                stringOject[ch] = (stringOject[ch] || 0) + 1;
+            }
+            for(ch of stringTwo) {
+                if(!stringOject[ch]) {
+                    console.log("string charecter not match");
+                    return false;
+                }
+                stringOject[ch]--;
+            }
+            console.log('String are anagram');
+        }
+        checkAnagram("cat", "atc")
+    </script>
+</body>
+
+</html>

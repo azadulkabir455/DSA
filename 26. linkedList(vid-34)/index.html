@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linked list</title>
+</head>
+
+<body>
+    <h4>Linked list</h4>
+
+    <script>
+        class List {
+            constructor(data) {
+                this.head = {
+                    value: data,
+                    next: null
+                }
+                this.tail = this.head;
+                this.size = 1
+            }
+            appendData(addData) {
+                let newNode = {
+                    value: addData,
+                    next: null
+                }
+                this.tail.next = newNode;
+                this.tail = newNode;
+                this.size++
+            }
+            traversing() {
+                let current = 1;
+                let currentNode = this.head;
+                while (current < this.size) {
+                    // console.log(currentNode)
+                    currentNode = currentNode.next;
+                    current++
+                }
+            }
+            deleteNode(index) {
+                let counter = 1;
+                let lead = this.head;
+                if (lead === index) {
+                    this.head = this.head.next;
+                } else {
+                    while (counter < index - 1) {
+                        lead = lead.next;
+                        counter++
+                    }
+                    let nextNode = lead.next.next;
+                    console.log("Delete Node: ", lead.next)
+                    lead.next = nextNode;
+                }
+
+            }
+            insertNode(index, value) {
+                let counter = 1;
+                let currentNode = this.head;
+                while (counter < index - 1) {
+                    currentNode = currentNode.next;
+                    counter++;
+                }
+                let tempNextNode = currentNode.next;
+                currentNode.next = {
+                    value: value,
+                    next: nextNode
+                }
+            }
+            searchList(value) {
+                let result = undefined;
+                let lead = this.head;
+                let loop  = true;
+                let count = 1;
+                while(loop) {
+                    lead = lead.next;
+                    count++
+                    loop = !!lead;
+                    if(loop && lead.value === value) {
+                        result = lead;
+                        loop = false;
+                    }
+                }
+                console.log(result, count);
+            }
+        }
+        let newList = new List(200);
+        newList.appendData(300);
+        newList.appendData(400);
+        newList.appendData(500);
+        newList.appendData(600);
+        newList.traversing();
+        // newList.deleteNode(2);
+        // newList.insertNode(3, 5000);
+        newList.searchList(500)
+        // console.log(newList)
+
+    </script>
+</body>
+
+</html>
