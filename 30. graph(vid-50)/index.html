@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+</head>
+
+<body>
+    <h4>Graph</h4>
+
+    <script>
+        class Graph {
+            constructor() {
+                this.data = {};
+            }
+            addVertex(v) {
+                if (!this.data[v]) {
+                    this.data[v] = [];
+                }
+            }
+            addEdge(v1, v2) {
+                if (!this.data[v1]) {
+                    this.addVertex(v1);
+                }
+                if (!this.data[v2]) {
+                    this.addVertex(v2);
+                }
+                this.data[v1].push(v2)
+                this.data[v2].push(v1)
+            }
+
+            removeEdge(v1, v2) {
+                this.data[v1] = this.data[v1].filter((item) => item != v2);
+                this.data[v2] = this.data[v2].filter((item) => item != v1);
+            }
+
+            removeVertax(vertax) {
+                if (!this.data[vertax]) {
+                    return;
+                }
+                for(let item of this.data[vertax]) {
+                    this.removeEdge(vertax, item);
+                }
+                delete this.data[vertax]
+            }
+        }
+        const graph = new Graph();
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
+        graph.addEdge("A", "B");
+        graph.addEdge("A", "C");
+        graph.addEdge("B", "C");
+        graph.addEdge("B", "D");
+        // graph.removeEdge("A", "B")
+        // graph.removeEdge("C", "B")
+        // graph.removeEdge("D", "B")
+        graph.removeVertax("A")
+
+        console.log(graph.data)
+    </script>
+</body>
+
+</html>
